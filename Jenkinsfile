@@ -17,7 +17,7 @@ pipeline
         {
             when
             {
-                build 'master'
+                branch 'master'
             }
             
             steps
