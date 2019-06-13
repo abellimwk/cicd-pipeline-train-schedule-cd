@@ -23,6 +23,13 @@ pipeline
             steps
             {
                 echo 'Deploying to Staging'
+                withCredentials([usernamePassword(credentialsId: 'webserver_login',
+                                                   usernameVariable: 'USERNAME',
+                                                   passwordVariable: 'USERPASS')])
+                {
+                    sshPublisher(failOnError: true,
+                                 continueOnError: false)
+                }
             }
         }
     }
